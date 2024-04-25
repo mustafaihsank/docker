@@ -56,6 +56,9 @@ $ docker image prune -f -a
 $ docker run <image name>:<version>
 $ docker run --name <container name> <image name>:<version>
 
+## Create container and start the integrated terminal in it
+$ docker run -it <image name> sh
+
 ## List containers
 $ docker container ls
 $ docker container ls -a
@@ -76,7 +79,4 @@ $ docker start <container name>
 
 ## Deactivate container
 $ docker stop <container name>
-
-## Create container and start the integrated terminal in it
-$ docker run -it <image name> sh
 ```
