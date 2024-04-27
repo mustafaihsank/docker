@@ -1,3 +1,5 @@
+https://docs.docker.com/get-started/docker_cheatsheet.pdf
+
 ```sh
 ## Version of Docker
 $ docker --version
@@ -58,6 +60,9 @@ $ docker run --name <container name> <image name>:<version>
 
 ## Create container and start the integrated terminal in it
 $ docker run -it <image name> sh
+
+## Exit integrated terminal
+$ exit
 
 ## List containers
 $ docker container ls
