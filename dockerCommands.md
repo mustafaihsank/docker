@@ -57,6 +57,7 @@ $ docker image prune -f -a
 ## Create container from image
 $ docker run <image name>:<version>
 $ docker run --name <container name> <image name>:<version>
+$ docker run -d --name <container name> -p <container port>:<outer request port> <image name>:<version>
 
 ## Create container and start the integrated terminal in it
 $ docker run -it <image name> sh
@@ -84,4 +85,49 @@ $ docker start <container name>
 
 ## Deactivate container
 $ docker stop <container name>
+
+## Login to docker hub in CLI
+$ docker login
+$ docker login -u <username> -p <password>
+
+## Push container image to docker hub
+$ docker push <usename>/<imagename>
+
+## Pull container image from docker hub
+$ docker pull <usename>/<imagename>
+
+## Clear everything on docker system
+$ docker system prune -f -a
+
+##
+##
+## Compose means the container that contains two apps like having frontend and backend in same container.
+## optional
+# version: 'version'
+services:
+  frontend:
+    image: "docker-image-frontend"
+    build: ./frontend
+    ports:
+      - <container port>:<outer request port>
+      - <container port>:<outer request port>
+    restart: on-failure
+    depends_on:
+      - backend
+
+  backend:
+    image: "docker-compose-backend"
+    build: ./backend
+    ports:
+      - <container port>:<outer request port>
+    restart: on-failure
+    volumes: # Add to not loose these data, size always changes
+      - $PWD/backend/logs:/backend/logs
+      - $PWD/backend/upload:/backend/upload
+##
+##
+
+## To create images and containers and run with one command
+$ docker compose up -d --build
+$ docker compose down
 ```
